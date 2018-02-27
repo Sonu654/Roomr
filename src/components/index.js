@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { View, Text, StyleSheet, Platform, Image, Dimensions, TouchableOpacity } from 'react-native';
 import COVER_IMAGE from '../images/cover.png';
 let { height, width } = Dimensions.get('window');
-import Actions from 'react-native-router-flux';
+import {Actions} from 'react-native-router-flux';
 class Launch extends Component {
     constructor(props) {
         super(props);
@@ -12,7 +12,7 @@ class Launch extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <TouchableOpacity onPress={()=>{ Actions.home()}}> 
+                <TouchableOpacity onPress={()=>{ Actions.main()}}> 
                     <Image source={COVER_IMAGE} style={styles.imgCover} />
                 </TouchableOpacity>
             </View>
