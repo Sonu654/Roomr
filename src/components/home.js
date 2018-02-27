@@ -89,7 +89,7 @@ class Main extends Component {
                     </View>
                 </View>
                 <View style={styles.bottom}>
-                    <Text style={styles.myzBottomText}>Skip & Browse</Text>
+                    <Text style={styles.myzBottomText}></Text>
                 </View>
 
                 {/* <TouchableOpacity onPress={()=>{ Actions.main()}}> 
