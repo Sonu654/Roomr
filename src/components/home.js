@@ -16,11 +16,11 @@ class Main extends Component {
         return (
             <View style={styles.container}>
                 <View style={styles.top}>
-                    <View style={{ flex: 0.9 }}>
+                    <View style={{ flex: 0.8 }}>
                         <Text style={styles.myTitle}>{this.props.title}</Text>
                     </View>
-                    <View style={{ flex: 0.1 }}>
-                        <Text style={styles.closeBtn}>X</Text>
+                    <View style={{ flex: 0.2 }}>
+                        <Text style={styles.closeBtn} onPress={() => { Actions.launch() }}>X</Text>
                     </View>
                 </View>
                 <View style={styles.center}>
@@ -28,6 +28,23 @@ class Main extends Component {
                         <Image source={HOUSE} style={styles.imgCover} />
                     </View>
                     <View style={styles.userContainer}>
+                        <View style={{ flex: 0.1, flexDirection: 'row', justifyContent: 'space-between', }}>
+                            <View style={{ flex: 0.7 }}></View>
+                            <View style={{
+                                backgroundColor: '#ECECEC',
+                                flex: 0.1,
+                                zIndex: 99,
+                                borderBottomLeftRadius: 150,
+                                borderBottomRightRadius: 150,
+                                borderTopLeftRadius: 150,
+                                borderTopRightRadius: 150,
+                            }}>
+                                <TouchableOpacity onPress={() => { Actions.addUser() }}>
+                                    <Text style={styles.plus}>+</Text>
+                                </TouchableOpacity>
+                            </View>
+                            <View style={{ flex: 0.2 }}></View>
+                        </View>
                         <View style={styles.userMainContainer}>
                             <View style={styles.userSubContainer}>
                                 <View style={styles.userView}>
@@ -83,9 +100,9 @@ class Main extends Component {
                                 </View>
 
                             </View>
-                            
+
                         </View>
-                        <View style={{ flex: 0.1, backgroundColor: "red" }}></View>
+                        <View style={{ flex: 0.1 }}></View>
                     </View>
                 </View>
                 <View style={styles.bottom}>
@@ -128,12 +145,12 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between'
     },
     myTitle: {
-        fontSize: 24,
+        fontSize: 18,
         fontWeight: '400',
-        textAlign: 'center',
+        textAlign: 'right',
         color: '#fff',
         textAlignVertical: 'center',
-        padding: 15,
+        padding: 18,
         fontFamily: 'Verdana'
     },
     myzBottomText: {
@@ -145,19 +162,35 @@ const styles = StyleSheet.create({
     },
     closeBtn: {
         color: '#fff',
-        textAlign: 'center',
         fontWeight: 'bold',
-        fontSize: 18,
-        padding: 20,
+        fontSize: 16,
+        padding: 22,
         fontFamily: 'Verdana',
+        textAlign: 'center',
     },
-    userContainer: { flex: 0.7 },
-    userMainContainer: { flex: 0.9, marginTop: 10 },
-    userSubContainer: { flex: 0.5, flexDirection: 'row' },
-    houseImg: { flex: 0.3 },
-    userView: { flex: 0.33 },
-    userTextView: { flex: 0.1 },
-    userImageView: { flex: 0.9 },
+    userContainer: {
+        flex: 0.7
+    },
+    userMainContainer: {
+        flex: 0.8,
+        marginTop: 10
+    },
+    userSubContainer: {
+        flex: 0.5,
+        flexDirection: 'row'
+    },
+    houseImg: {
+        flex: 0.3
+    },
+    userView: {
+        flex: 0.33
+    },
+    userTextView: {
+        flex: 0.1
+    },
+    userImageView: {
+        flex: 0.9
+    },
     userImage: {
         borderBottomLeftRadius: 150,
         borderBottomRightRadius: 150,
@@ -166,5 +199,15 @@ const styles = StyleSheet.create({
         marginLeft: 10,
         marginTop: 20,
     },
-    imageText: { textAlign: 'center', fontSize: 12 }
+    imageText: {
+        textAlign: 'center',
+        fontSize: 12
+    },
+    plus: {
+        color: 'rgb(68, 35, 124)',
+        fontSize: 40,
+        fontWeight: '800',
+        textAlign: 'center',
+        marginTop: -10
+    }
 });

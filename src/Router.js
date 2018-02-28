@@ -4,6 +4,7 @@ import { Text } from 'react-native';
 import Launch from './components/';
 import Main from './components/main';
 import Home from './components/home';
+import User from './components/user';
 
 export default class RouterComponent extends Component {
 
@@ -15,7 +16,8 @@ export default class RouterComponent extends Component {
                     <Stack key="tab_" hideNavBar hideTabBar>
                         <Scene key="main" component={Main} title="Create a Profile" />
                         <Scene key="home" component={Home} title="Create a New Home" />
-
+                        <Scene key="addUser" component={User} title="Add a Person" />
+                        
                     </Stack>
                 </Scene>
             </Router>
