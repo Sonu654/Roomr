@@ -18,7 +18,7 @@ class User extends Component {
                         <Text style={styles.myTitle}>{this.props.title}</Text>
                     </View>
                     <View style={{ flex: 0.2 }}>
-                        <Text style={styles.closeBtn} onPress={() => { Actions.launch() }}>X</Text>
+                        <Text style={styles.closeBtn} onPress={() => { Actions.userModal() }}>X</Text>
                     </View>
                 </View>
                 <View style={styles.center}>

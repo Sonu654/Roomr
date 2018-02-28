@@ -5,6 +5,7 @@ import Launch from './components/';
 import Main from './components/main';
 import Home from './components/home';
 import User from './components/user';
+import UserModal from './components/userModal';
 
 export default class RouterComponent extends Component {
 
@@ -17,6 +18,7 @@ export default class RouterComponent extends Component {
                         <Scene key="main" component={Main} title="Create a Profile" />
                         <Scene key="home" component={Home} title="Create a New Home" />
                         <Scene key="addUser" component={User} title="Add a Person" />
+                        <Scene key="userModal" component={UserModal} title="Add User" />
                         
                     </Stack>
                 </Scene>
