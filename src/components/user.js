@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { View,TextInput, Text, StyleSheet, Platform, Image, Dimensions, TouchableOpacity } from 'react-native';
-import HOME_IMAGE from '../images/home.png';
-import SEARCH_IMAGE from '../images/search.png';
+import SEARCH_IMAGE from '../images/search_.png';
+import ADD_NEW_USER from '../images/add_new.png'
 let { height, width } = Dimensions.get('window');
 import { Actions } from 'react-native-router-flux';
+
 class User extends Component {
     constructor(props) {
         super(props);
@@ -27,13 +28,13 @@ class User extends Component {
                     </View>
                     <View style={{ flex: 0.4 }}>
                         <TouchableOpacity onPress={() => { Actions.home() }}>
-                            <Image source={HOME_IMAGE} style={styles.imgCover} />
+                            <Image source={SEARCH_IMAGE} style={styles.imgCover} />
                         </TouchableOpacity>
                     </View>
                     <View style={{ flex: 0.1 }}></View>
                     <View style={{ flex: 0.4 }}>
                         <TouchableOpacity>
-                            <Image source={SEARCH_IMAGE} style={styles.imgCover} />
+                            <Image source={ADD_NEW_USER} style={styles.imgCover} />
                         </TouchableOpacity></View>
                 </View>
                 <View style={styles.bottom}>
@@ -60,7 +61,7 @@ const styles = StyleSheet.create({
     },
     imgCover: {
         marginTop: 25,
-        marginLeft: 50
+        resizeMode: 'stretch' 
     },
     top: {
         flex: 0.1,

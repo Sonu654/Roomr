@@ -1,19 +1,39 @@
 import { combineReducers } from 'redux';
-import { DATA_AVAILABLE } from '../actions/';
-let dataState={data:[],loading:true};
-const dataReducer =(state=dataState, action)=>{
+import { USER_AVAILABLE, USER_FOUND } from '../actions/';
+
+const userReducer = (state, action) => {
+    console.log(action.type);
     switch (action.type) {
-      case DATA_AVAILABLE:
-          state=Object.assign({},state,{data:action.data, loading:false});
-          return state;
-      default:
-        return state;
+        case USER_AVAILABLE:
+            return {
+                ...state,
+                data: action.data,
+                loading: false,
+            }
+        default:
+            return {...state}
 
     }
 };
 
+const contactReducer = (state, action) => {
+    switch (action.type) {
+        case USER_FOUND:
+            return {
+                ...state,
+                isContactInfo: true,
+                data: action.data,
+                loading: false
+            };
+        default:
+            return { ...state }
+    }
+}
+
+
 const rootReducer = combineReducers({
-    dataReducer
+    userReducer,
+    contactReducer
     // ,[ANOTHER REDUCER], [ANOTHER REDUCER] ....
 })
 

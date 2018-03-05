@@ -1,23 +1,35 @@
-export const DATA_AVAILABLE ='DATA_AVAILABLE';
-
+export const USER_AVAILABLE = 'USER_AVAILABLE';
+export const USER_FOUND = 'USER_FOUND';
+import Data from '../users.json';
 //import Data from '../instruction.json';
 //                   instruction.json
-data={
-    'u01':{
-        'uname':'Suraj123',
-        'name':'Suraj Sanwal'
-    },
-    'u02':{
-        'uname':'Dheeraj123',
-        'name':'Dheeraj Sanwal'
-    }
-};
 
-export function getData(){
-  return (dispatch)=>{
-      setTimeout(()=>{
-        var data=Data.instructions;
-        dispatch({type:DATA_AVAILABLE,data:data});
-      },2000);
-  }
+export function getUser() {
+    console.log('inside user data');
+    return (dispatch) => {
+        setTimeout(() => {
+            console.log(Data);
+            dispatch({ type: USER_AVAILABLE, data: Data });
+        }, 2000);
+    }
+}
+
+
+export function getUserByName(uname) {
+    console.log('inside contact data');
+    users=Data.users;
+    return (dispatch) => {
+        for (let user in users) {
+            console.log('user: ',user);
+            if (users[user].uname == uname) {
+                userData = {
+                    "uname": uname,
+                    "name": users[user].name,
+                    "userImg": users[user].userImg
+                };
+                console.log('Contact : ',userData);
+                dispatch({ type: USER_FOUND, data: userData });
+            }
+        }
+    }
 }
