@@ -1,48 +1,89 @@
 import React, { Component } from "react";
-import { View, Text, StyleSheet, Platform, Image, Dimensions, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, Platform, Image, Dimensions, TouchableOpacity,ActivityIndicator} from 'react-native';
 import HOME_IMAGE from '../images/home.png';
 import SEARCH_IMAGE from '../images/search.png';
 let { height, width } = Dimensions.get('window');
 import { Actions } from 'react-native-router-flux';
+import { MyActions } from 'react-redux';
+import {Connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 class Main extends Component {
     constructor(props) {
         super(props);
-        console.log("Launch...!");
+        this.state = {
+            isLoading: true
+        }
+    }
+
+    ComponentWillReciveProps = () => {
+        this.props.getLauncher();
     }
 
     render() {
-        return (
-            <View style={styles.container}>
-                <View style={styles.top}>
-                    <Text style={styles.myTitle}>{this.props.title}</Text>
+        if (this.props.isLoading) {
+            return (
+                <View style={styles.ActivityIndicatorContainer}>
+                    <ActivityIndicator
+                        animating={true}
+                        style={{
+                            height: 80,
+                            marginTop: 400
+                        }}
+                        size='large'
+                        color='rgb(68, 35, 124)'
+                    />
                 </View>
-                <View style={styles.center}>
-                    <View style={{ flex: 0.5 }}>
-                        <TouchableOpacity onPress={() => { Actions.home() }}>
-                            <Image source={HOME_IMAGE} style={styles.imgCover} />
-                        </TouchableOpacity>
-                    </View>
-                    <View style={{ flex: 0.5 }}>
-                        <TouchableOpacity>
-                            <Image source={SEARCH_IMAGE} style={styles.imgCover} />
-                        </TouchableOpacity></View>
-                </View>
-                <View style={styles.bottom}>
-                    <Text style={styles.myzBottomText}>Skip & Browse</Text>
-                </View>
+            )
+        } else {
 
-                {/* <TouchableOpacity onPress={()=>{ Actions.main()}}> 
+            return (
+                <View style={styles.container}>
+                    <View style={styles.top}>
+                        <Text style={styles.myTitle}>{this.props.title}</Text>
+                    </View>
+                    <View style={styles.center}>
+                        <View style={{ flex: 0.5 }}>
+                            <TouchableOpacity onPress={() => { Actions.home() }}>
+                                <Image source={HOME_IMAGE} style={styles.imgCover} />
+                            </TouchableOpacity>
+                        </View>
+                        <View style={{ flex: 0.5 }}>
+                            <TouchableOpacity>
+                                <Image source={SEARCH_IMAGE} style={styles.imgCover} />
+                            </TouchableOpacity></View>
+                    </View>
+                    <View style={styles.bottom}>
+                        <Text style={styles.myzBottomText}>Skip & Browse</Text>
+                    </View>
+
+                    {/* <TouchableOpacity onPress={()=>{ Actions.main()}}> 
                     <Image source={COVER_IMAGE} style={styles.imgCover} />
                   </TouchableOpacity> */}
-            </View>
-        )
+                </View>
+            )
+        }
     }
 }
 
+mapDispatchToProps=(dispatch)=>{
+    return bindActionCreators(MyActions,dispatch);
+}
 
-export default Main;
+mapStateToProps=(state,props)=>{
+    return({
+
+    }
+}
+
+export default (mapStateToProps,mapDispatchToProps)(Main);
 
 const styles = StyleSheet.create({
+    activityIndicatorContainer: {
+        backgroundColor: "#fff",
+        alignItems: 'center',
+        justifyContent: 'center',
+        flex: 1
+    },
     container: {
         marginTop: Platform.OS == 'ios' ? 20 : 0,
         flex: 1,
